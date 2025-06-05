@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSPT1 Injection Molding Expertise</title>
+    <style>
+        :root {
+            --primary-color: #5D5CDE;
+            --primary-dark: #4f46e5;
+            --bg-color: #FFFFFF;
+            --text-color: #1a1a1a;
+            --card-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+            --success-color: #10b981; /* Green for increase */
+            --warning-color: #f59e0b; /* Yellow for other/action */
+            --error-color: #ef4444;   /* Red for decrease */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+         .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+         }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+         .control-group label {
+            font-weight: 600;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+         }
+
+        input[type="text"], select {
+            padding: 0.75rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+
+        input[type="text"]:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(93, 92, 222, 0.1);
+        }
+
+        .defects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .defect-category {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .defect-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            flex-grow: 1;
+        }
+
+        .defect-item {
+            padding: 1rem;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .defect-item:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .defect-item.selected {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+
+        .defect-item.selected:hover {
+             transform: none;
+        }
+
+        .solution-panel {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+            display: none;
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        .solution-panel.active {
+            display: block;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .solution-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .solution-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .solution-description {
+            color: var(--text-color);
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .steps-container {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .step-item {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .step-number {
+            background: var(--primary-color);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-action-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+        }
+
+        .step-direction {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .direction-increase {
+            color: var(--success-color);
+        }
+
+        .direction-decrease {
+            color: var(--error-color);
+        }
+
+        .direction-other {
+            color: var(--warning-color);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            text-align: center;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .header p {
+                font-size: 0.9rem;
+            }
+
+            .controls {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                 padding: 1rem;
+            }
+
+            .defects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .defect-category {
+                 padding: 1rem;
+            }
+
+            .category-title {
+                 font-size: 1.2rem;
+                 gap: 0.5rem;
+            }
+
+            .defect-item {
+                 padding: 0.75rem;
+                 font-size: 0.95rem;
+            }
+
+            .solution-panel {
+                 padding: 1.5rem;
+            }
+
+            .solution-title {
+                 font-size: 1.5rem;
+            }
+
+            .step-item {
+                 flex-direction: column;
+                 align-items: flex-start;
+                 gap: 0.5rem;
+                 padding: 0.75rem;
+            }
+
+            .step-number {
+                 width: 30px;
+                 height: 30px;
+                 font-size: 1rem;
+            }
+
+            .step-action-name {
+                 font-size: 1rem;
+            }
+
+            .step-direction {
+                 font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 id="headerTitle">ระบบวิเคราะห์และแก้ไขปัญหาการฉีดพลาสติก</h1>
+            <p id="headerSubtitle">TSPT1 Injection Molding Expertise</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="languageToggle" id="languageLabel">🌍 ภาษา:</label>
+                <select id="languageToggle">
+                    <option value="th">ไทย</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="searchInput" id="searchLabel">🔎 ค้นหาปัญหา:</label>
+                <input type="text" id="searchInput" placeholder="พิมพ์ชื่อปัญหาที่ต้องการค้นหา...">
+            </div>
+        </div>
+
+        <div class="defects-grid">
+            <div class="defect-category">
+                <h2 class="category-title">
+                    <span>⚙️</span>
+                    <span id="machineDefectsTitle">ปัญหาที่เกี่ยวข้องกับเครื่องจักร (Machine-Related Defects)</span>
+                </h2>
+                <div class="defect-list" id="machineDefectsList"></div>
+            </div>
+
+            <div class="defect-category">
+                <h2 class="category-title">
+                    <span>📦</span>
+                    <span id="partDefectsTitle">ปัญหาที่ชิ้นงาน (Part Defects)</span>
+                </h2>
+                <div class="defect-list" id="partDefectsList"></div>
+            </div>
+        </div>
+
+        <div class="solution-panel" id="solutionPanel">
+            <div class="solution-header">
+                <h2 class="solution-title" id="solutionTitle"></h2>
+                <p class="solution-description" id="solutionDescription"></p>
+            </div>
+            <div class="steps-container" id="stepsContainer"></div>
+        </div>
+    </div>
+
+    <footer>
+         <p id="footerDisclaimer">ข้อมูลนี้เป็นแนวทางเบื้องต้น โปรดปรึกษาผู้เชี่ยวชาญและคู่มือเฉพาะเครื่องจักร/วัสดุสำหรับการแก้ไขปัญหาจริง</p>
+    </footer>
+
+    <script>
+        const defectsDatabase = {
+            parameterNames: {
+                backpressure: { th: 'แรงดันย้อนกลับ (Backpressure)', en: 'Backpressure' },
+                injForwardTime: { th: 'เวลาการฉีดส่ง (Inj. Forward Time)', en: 'Inj. Forward (Booster) Time' },
+                clampPressure: { th: 'แรงดันจับยึด (Clamp Pressure)', en: 'Clamp Pressure' },
+                cylinderTemperature: { th: 'อุณหภูมิกระบอกฉีด (Cylinder Temperature)', en: 'Cylinder Temperature' },
+                holdingPressure: { th: 'แรงดันคงค้าง (Holding Pressure)', en: 'Holding Pressure' },
+                injectionHoldTime: { th: 'เวลาคงค้างการฉีด (Injection Hold Time)', en: 'Injection Hold Time' },
+                injectionPressure: { th: 'แรงดันการฉีด (Injection Pressure)', en: 'Injection Pressure' },
+                injectionSpeed: { th: 'ความเร็วการฉีด (Injection Speed)', en: 'Injection Speed' },
+                shotSize: { th: 'ปริมาณวัสดุ (Shot Size / Material Feed)', en: 'Shot Size (Material Feed)' },
+                meltTemperature: { th: 'อุณหภูมิพลาสติกเหลว (Melt Temperature)', en: 'Melt Temperature' },
+                moldcoolingTime: { th: 'เวลาการเย็นตัวแม่พิมพ์ (Mold Cooling Time)', en: 'Mold Cooling Time' },
+                moldTemperature: { th: 'อุณหภูมิแม่พิมพ์ (Mold Temperature)', en: 'Mold Temperature' },
+                nozzleTemperature: { th: 'อุณหภูมิหัวฉีด (Nozzle Temperature)', en: 'Nozzle Temperature' },
+                overallCycleTime: { th: 'เวลาวัฏจักรโดยรวม (Overall Cycle Time)', en: 'Overall Cycle Time' },
+                screwSpeed: { th: 'ความเร็วสกรู (Screw Speed)', en: 'Screw Speed' },
+                changeGateLocation: { th: 'เปลี่ยนตำแหน่งเกท (Change Gate Location)', en: 'Change Gate Location' },
+                sizeOfGate: { th: 'ขนาดเกท (Size of Gate)', en: 'Size of Gate' },
+                sizeOfSprueRunner: { th: 'ขนาดสปรูว์/รันเนอร์ (Size of Sprue/Runner)', en: 'Size of Sprue/Runner' },
+                sizeOfVent: { th: 'ขนาดรูระบายอากาศ (Size of Vent)', en: 'Size of Vent' },
+                checkMaterialContamination: { th: 'ตรวจสอบการปนเปื้อนวัสดุ', en: 'Check for Material Contamination' },
+                checkFitMoldFaces: { th: 'ตรวจสอบความพอดีของหน้าแม่พิมพ์', en: 'Check Fit of Mold Faces' },
+                cleanCavitySurface: { th: 'ทำความสะอาดผิวโพรงแม่พิมพ์', en: 'Clean Cavity Surface' },
+                cleanMoldFaces: { th: 'ทำความสะอาดหน้าแม่พิมพ์', en: 'Clean Mold Faces' },
+                cleanVents: { th: 'ทำความสะอาดรูระบายอากาศ', en: 'Clean Vents' },
+                dryMaterials: { th: 'อบวัสดุให้แห้ง', en: 'Dry Materials' },
+                regrindQuantity: { th: 'ปริมาณวัสดุรีไซเคิล (Regrind Quantity)', en: 'Regrind Quantity' },
+                purgeCleanScrewBarrel: { th: 'ล้าง/ทำความสะอาดสกรูและกระบอกฉีด', en: 'Purge/Clean Screw & Barrel' }
+            },
+            machineDefects: {
+                excessiveFlash: {
+                    name: { th: 'ครีบมากเกินไป (Excessive Flash)', en: 'Excessive Flash' },
+                    description: {
+                        th: 'ลักษณะ: ครีบพลาสติกส่วนเกินที่ยื่นออกมาตามแนวระนาบแบ่งของแม่พิมพ์ (Parting Line) หรือบริเวณช่องว่างอื่นๆ เช่น รอบแกนดัน (Ejector Pins) หรือสไลด์ (Slides) สาเหตุหลัก: เกิดขึ้นเมื่อแรงดันภายในโพรงแม่พิมพ์สูงกว่าแรงจับยึดของแม่พิมพ์ (Clamping Force) หรือเมื่อมีความพอดีของผิวหน้าแม่พิมพ์ไม่สมบูรณ์ ทำให้พลาสติกหลอมเหลวสามารถแทรกตัวออกไปได้ ปัจจัยเสริม: การระบายอากาศ (Venting) ที่ไม่ดีพอ, อุณหภูมิวัสดุ/แม่พิมพ์สูงเกินไป, หรือความหนืดของพลาสติกต่ำเกินไป',
+                        en: 'Appearance: Excess molten plastic material that protrudes from the mold parting line or other gaps, such as around ejector pins or slides. Primary Cause: Occurs when the internal cavity pressure exceeds the machine\'s clamping force, or when there is an imperfect fit between mold faces, allowing melt to escape. Contributing Factors: Inadequate venting, excessively high melt/mold temperatures, or excessively low plastic viscosity.'
+                    },
+                    steps: [
+                        { order: 1, action: 'injectionPressure', direction: 'decrease' },
+                        { order: 2, action: 'cylinderTemperature', direction: 'decrease' },
+                        { order: 3, action: 'clampPressure', direction: 'increase' },
+                        { order: 4, action: 'injectionHoldTime', direction: 'decrease' },
+                        { order: 5, action: 'backpressure', direction: 'decrease' },
+                        { order: 6, action: 'injectionSpeed', direction: 'decrease' },
+                        { order: 7, action: 'moldTemperature', direction: 'decrease' },
+                        { order: 8, action: 'cleanMoldFaces', direction: 'action' },
+                        { order: 9, action: 'checkFitMoldFaces', direction: 'action' },
+                        { order: 10, action: 'sizeOfVent', direction: 'increase' }
+                    ]
+                },
+                oversizedPart: {
+                    name: { th: 'ชิ้นงานมีขนาดใหญ่เกินไป (Oversized Part)', en: 'Oversized Part' },
+                    description: {
+                        th: 'ลักษณะ: ชิ้นงานฉีดพลาสติกมีขนาดมิติโดยรวมใหญ่กว่าค่าที่กำหนดในแบบงาน (Specification) อย่างมีนัยสำคัญ สาเหตุหลัก: เกิดจากการขยายตัวของวัสดุเมื่อได้รับความร้อนเกินกว่าที่คาดการณ์ไว้ หรือการหดตัว (Shrinkage) น้อยกว่าปกติเมื่อเย็นตัวลง ปัจจัยเสริม: แรงดันย้ำ (Holding Pressure) หรือเวลาการย้ำ (Holding Time) ที่มากเกินไป ทำให้มีการอัดแน่นของวัสดุในแม่พิมพ์มากเกิน, อุณหภูมิแม่พิมพ์สูงเกินไปทำให้การเย็นตัวช้าลง',
+                        en: 'Appearance: The injection molded part exhibits overall dimensions significantly larger than specified in the design. Primary Cause: Results from material expansion due to higher-than-anticipated heating, or less-than-normal shrinkage upon cooling. Contributing Factors: Excessive holding pressure or holding time leading to overpacking of material in the mold; excessively high mold temperature slowing down cooling and solidification.'
+                    },
+                    steps: [
+                        { order: 1, action: 'injectionSpeed', direction: 'decrease' },
+                        { order: 2, action: 'injForwardTime', direction: 'decrease' },
+                        { order: 3, action: 'injectionPressure', direction: 'decrease' },
+                        { order: 4, action: 'holdingPressure', direction: 'decrease' },
+                        { order: 5, action: 'cylinderTemperature', direction: 'decrease' },
+                        { order: 6, action: 'moldTemperature', direction: 'increase' },
+                        { order: 7, action: 'overallCycleTime', direction: 'decrease' },
+                        { order: 8, action: 'clampPressure', direction: 'increase' }
+                    ]
+                },
+                partSticking: {
+                     name: { th: 'ชิ้นงานติดแม่พิมพ์ (Part Sticking)', en: 'Part Sticking' },
+                     description: {
+                         th: 'ลักษณะ: ชิ้นงานฉีดพลาสติกไม่สามารถหลุดออกจากโพรงแม่พิมพ์ (Cavity) หรือแกน (Core) ได้อย่างสมบูรณ์ในระหว่างกระบวนการปลดชิ้นงาน (Ejection) สาเหตุหลัก: แรงยึดเกาะระหว่างชิ้นงานกับผิวแม่พิมพ์สูงเกินไป ซึ่งอาจเกิดจากผิวแม่พิมพ์ที่หยาบ, มุมถอดแบบ (Draft Angle) ไม่เพียงพอ, การออกแบบระบบปลดชิ้นงานที่ไม่เหมาะสม ปัจจัยเสริม: แรงดันย้ำสูงหรือนานเกินไป, อุณหภูมิแม่พิมพ์หรือวัสดุสูงเกินไป, การหดตัวของวัสดุมากทำให้รัดแกนแน่น',
+                         en: 'Appearance: The molded part fails to release completely from the mold cavity or core during the ejection process. Primary Cause: Excessive adhesion between the part and the mold surface, potentially due to a rough mold finish, insufficient draft angles, or inadequate ejector system design. Contributing Factors: Excessive or prolonged holding pressure, high mold or melt temperatures, or significant material shrinkage causing the part to grip onto cores.'
+                     },
+                     steps: [
+                         { order: 1, action: 'injectionPressure', direction: 'decrease' },
+                         { order: 2, action: 'holdingPressure', direction: 'decrease' },
+                         { order: 3, action: 'injForwardTime', direction: 'decrease' },
+                         { order: 4, action: 'moldcoolingTime', direction: 'increase' },
+                         { order: 5, action: 'moldTemperature', direction: 'decrease' },
+                         { order: 6, action: 'cylinderTemperature', direction: 'decrease' },
+                         { order: 7, action: 'injectionHoldTime', direction: 'decrease' },
+                         { order: 8, action: 'injectionSpeed', direction: 'decrease' }
+                     ]
+                },
+                shortShot: { // Mapped from "Shot Sticking" in table
+                     name: { th: 'ชิ้นงานฉีดไม่เต็ม (Short Shot)', en: 'Short Shot (Incomplete Fill)' },
+                     description: {
+                         th: 'ลักษณะ: พลาสติกหลอมเหลวไม่สามารถไหลเข้าไปเติมเต็มในโพรงแม่พิมพ์ (Cavity) ได้อย่างสมบูรณ์ ทำให้ชิ้นงานที่ได้มีรูปร่างไม่ครบถ้วนตามแบบ สาเหตุหลัก: ปริมาณพลาสติกที่ฉีด (Shot Size) ไม่เพียงพอ, แรงดันการฉีด (Injection Pressure) หรือความเร็วการฉีด (Injection Speed) ต่ำเกินไป ทำให้พลาสติกแข็งตัวก่อนที่จะเต็มแม่พิมพ์ ปัจจัยเสริม: อุณหภูมิพลาสติกหลอมเหลวหรืออุณหภูมิแม่พิมพ์ต่ำเกินไป, การระบายอากาศในแม่พิมพ์ไม่ดีพอ, ขนาดทางวิ่ง (Runner) หรือประตูเข้า (Gate) เล็กเกินไป',
+                         en: 'Appearance: Molten plastic fails to completely fill the mold cavity, resulting in an incomplete part. Primary Cause: Insufficient shot size, or injection pressure/speed being too low, causing the plastic to solidify before filling the mold. Contributing Factors: Low melt or mold temperature, inadequate mold venting, or undersized runners/gates.'
+                     },
+                     steps: [
+                         { order: 1, action: 'shotSize', direction: 'increase' },
+                         { order: 2, action: 'injectionPressure', direction: 'increase' },
+                         { order: 3, action: 'meltTemperature', direction: 'increase' },
+                         { order: 4, action: 'nozzleTemperature', direction: 'increase' },
+                         { order: 5, action: 'moldTemperature', direction: 'increase' },
+                         { order: 6, action: 'injectionSpeed', direction: 'increase' },
+                         { order: 7, action: 'sizeOfVent', direction: 'increase' },
+                         { order: 8, action: 'backpressure', direction: 'increase' },
+                         { order: 9, action: 'injectionHoldTime', direction: 'increase' },
+                         { order: 10, action: 'sizeOfSprueRunner', direction: 'increase' },
+                         { order: 11, action: 'sizeOfGate', direction: 'increase' },
+                         { order: 12, action: 'cleanVents', direction: 'action' }
+                     ]
+                 },
+                 sprueSticking: {
+                      name: { th: 'สปรูว์ติดแม่พิมพ์ (Sprue Sticking)', en: 'Sprue Sticking' },
+                      description: {
+                          th: 'ลักษณะ: ส่วนของพลาสติกที่เป็นสปรูว์ (Sprue Bushing Area) ติดค้างอยู่ในช่องสปรูว์ของแม่พิมพ์ ไม่หลุดออกมาพร้อมกับระบบทางวิ่ง (Runner System) หรือชิ้นงาน สาเหตุหลัก: การออกแบบสปรูว์บูชไม่เหมาะสม เช่น มุมเทเปอร์น้อยไป ผิวภายในหยาบ หรือเกิดการสึกหรอ ปัจจัยเสริม: อุณหภูมิหัวฉีด (Nozzle Temperature) สูงหรือต่ำเกินไป, แรงดึงสปรูว์ (Sprue Puller) ไม่ทำงาน, เวลาการเย็นตัวของสปรูว์ไม่เพียงพอ',
+                          en: 'Appearance: The sprue portion of the plastic remains stuck in the sprue bushing of the mold and does not detach with the runner system or part. Primary Cause: Improper sprue bushing design (e.g., insufficient taper, rough internal surface, wear). Contributing Factors: Nozzle temperature too high or too low, malfunctioning sprue puller, insufficient cooling time for the sprue.'
+                      },
+                      steps: [
+                          { order: 1, action: 'injectionPressure', direction: 'decrease' },
+                          { order: 2, action: 'injectionHoldTime', direction: 'decrease' },
+                          { order: 3, action: 'injForwardTime', direction: 'decrease' },
+                          { order: 4, action: 'moldcoolingTime', direction: 'decrease' },
+                          { order: 5, action: 'injectionSpeed', direction: 'decrease' },
+                          { order: 6, action: 'nozzleTemperature', direction: 'increase' }
+                      ]
+                 },
+                 undersizedPart: {
+                      name: { th: 'ชิ้นงานมีขนาดเล็กเกินไป (Undersized Part)', en: 'Undersized Part' },
+                      description: {
+                          th: 'ลักษณะ: ชิ้นงานฉีดพลาสติกมีขนาดมิติโดยรวมเล็กกว่าค่าที่กำหนดในแบบงาน (Specification) อย่างมีนัยสำคัญ สาเหตุหลัก: เกิดจากการหดตัว (Shrinkage) ของวัสดุพลาสติกที่มากกว่าปกติเมื่อเย็นตัวลง ซึ่งเป็นคุณสมบัติธรรมชาติของพอลิเมอร์ ปัจจัยเสริม: แรงดันย้ำ (Holding Pressure) หรือเวลาการย้ำ (Holding Time) ไม่เพียงพอ ทำให้ไม่สามารถชดเชยการหดตัวได้, อุณหภูมิพลาสติกหลอมเหลวหรืออุณหภูมิแม่พิมพ์ต่ำเกินไป, ปริมาณวัสดุที่ฉีด (Shot Size) น้อยเกินไป',
+                          en: 'Appearance: The injection molded part exhibits overall dimensions significantly smaller than specified in the design. Primary Cause: Results from greater-than-normal material shrinkage upon cooling, an inherent property of polymers. Contributing Factors: Insufficient holding pressure or holding time, preventing compensation for shrinkage; low melt or mold temperature; insufficient shot size.'
+                      },
+                      steps: [
+                          { order: 1, action: 'injectionSpeed', direction: 'increase' },
+                          { order: 2, action: 'injectionPressure', direction: 'increase' },
+                          { order: 3, action: 'injForwardTime', direction: 'increase' },
+                          { order: 4, action: 'holdingPressure', direction: 'increase' },
+                          { order: 5, action: 'injectionHoldTime', direction: 'increase' },
+                          { order: 6, action: 'cylinderTemperature', direction: 'increase' },
+                          { order: 7, action: 'moldTemperature', direction: 'decrease' },
+                          { order: 8, action: 'sizeOfGate', direction: 'increase' },
+                          { order: 9, action: 'moldcoolingTime', direction: 'decrease' }
+                      ]
+                 }
+            },
+            partDefects: {
+                blackSpotsBrownStreaks: {
+                    name: { th: 'จุดดำ/เส้นสีน้ำตาล (Black Spots/Brown Streaks)', en: 'Black Spots/Brown Streaks' },
+                    description: {
+                        th: 'ลักษณะ: ปรากฏจุดหรือเส้นสีเข้ม (ดำ, น้ำตาล) บนผิวหรือในเนื้อของชิ้นงานพลาสติก สาเหตุหลัก: การเสื่อมสภาพทางความร้อน (Thermal Degradation) ของพลาสติกหรือสารเติมแต่งในกระบอกฉีด (Barrel) หรือหัวฉีด (Nozzle) เนื่องจากอุณหภูมิสูงเกินไปหรือเวลาคงค้าง (Residence Time) นานเกินไป ปัจจัยเสริม: การปนเปื้อนของวัสดุแปลกปลอม, เศษวัสดุเก่าตกค้างในเครื่อง, การใช้ความเร็วรอบสกรู (Screw Speed) หรือแรงดันย้อนกลับ (Back Pressure) สูงเกินไปทำให้เกิดความร้อนจากการเฉือน (Shear Heating)',
+                        en: 'Appearance: Dark (black, brown) spots or streaks on the surface or within the bulk of the plastic part. Primary Cause: Thermal degradation of the plastic or additives in the barrel or nozzle due to excessive temperature or prolonged residence time. Contributing Factors: Contamination by foreign materials, old material residue in the machine, or excessive screw speed/back pressure leading to shear heating.'
+                    },
+                    steps: [
+                        { order: 1, action: 'purgeCleanScrewBarrel', direction: 'action' },
+                        { order: 2, action: 'checkMaterialContamination', direction: 'action' },
+                        { order: 3, action: 'meltTemperature', direction: 'decrease' },
+                        { order: 4, action: 'overallCycleTime', direction: 'decrease' },
+                        { order: 5, action: 'backpressure', direction: 'decrease' }
+                    ]
+                },
+                blisters: {
+                     name: { th: 'ฟองอากาศบนผิว (Blisters)', en: 'Blisters' },
+                     description: {
+                         th: 'ลักษณะ: เกิดเป็นตุ่มหรือฟองอากาศนูนขึ้นมาบนผิวหน้าของชิ้นงาน สาเหตุหลัก: ก๊าซที่ถูกกักเก็บไว้ภายในเนื้อพลาสติกแล้วพยายามดันตัวออกมาที่ผิวในขณะที่ผิวด้านนอกเริ่มแข็งตัว ก๊าซนี้อาจมาจากความชื้นในเม็ดพลาสติกที่ระเหยเป็นไอ, ก๊าซจากการสลายตัวของวัสดุ, หรืออากาศที่ถูกดักจับในแม่พิมพ์ ปัจจัยเสริม: การอบเม็ดพลาสติกไม่แห้งสนิท, อุณหภูมิวัสดุสูงเกินไป, การระบายอากาศในแม่พิมพ์ไม่เพียงพอ, แรงดันย้ำต่ำหรือเวลาสั้นไป',
+                         en: 'Appearance: Raised bubbles or bumps on the surface of the part. Primary Cause: Trapped gases within the plastic attempting to escape as the outer surface begins to solidify. These gases can originate from moisture in the resin (volatilizing into steam), gas from material degradation, or trapped air in the mold. Contributing Factors: Insufficiently dried resin, excessive melt temperature, inadequate mold venting, or insufficient/short holding pressure.'
+                     },
+                     steps: [
+                         { order: 1, action: 'screwSpeed', direction: 'decrease' },
+                         { order: 2, action: 'backpressure', direction: 'increase' },
+                         { order: 3, action: 'meltTemperature', direction: 'increase' },
+                         { order: 4, action: 'injectionSpeed', direction: 'decrease' },
+                         { order: 5, action: 'dryMaterials', direction: 'action' },
+                         { order: 6, action: 'regrindQuantity', direction: 'decrease' },
+                         { order: 7, action: 'sizeOfVent', direction: 'increase' }
+                     ]
+                },
+                brittleness: {
+                     name: { th: 'ชิ้นงานเปราะ (Brittleness)', en: 'Brittleness' },
+                     description: {
+                         th: 'ลักษณะ: ชิ้นงานมีความต้านทานต่อการแตกหักต่ำ, แตกง่ายเมื่อได้รับแรงกระแทกหรือการบิดงอ แม้จะไม่ใช่คุณสมบัติปกติของวัสดุนั้นๆ สาเหตุหลัก: การเสื่อมสภาพของโมเลกุลพอลิเมอร์ (Degradation) ทำให้สายโซ่โมเลกุลสั้นลง, หรือเกิดความเค้นตกค้าง (Residual Stress) ภายในชิ้นงานสูง ปัจจัยเสริม: อุณหภูมิวัสดุสูงหรือต่ำเกินไป, การปนเปื้อนของวัสดุอื่น, ความชื้นในวัสดุ, การออกแบบชิ้นงานที่มีมุมแหลมคม, การเย็นตัวที่เร็วเกินไป',
+                         en: 'Appearance: The part exhibits low resistance to fracture, breaking easily under impact or bending, even if not a normal characteristic of the material. Primary Cause: Degradation of polymer molecules (shortening molecular chains) or high internal residual stresses. Contributing Factors: Melt temperature too high or too low, contamination by other materials, moisture in the material, part design with sharp corners, excessively rapid cooling.'
+                     },
+                     steps: [
+                         { order: 1, action: 'meltTemperature', direction: 'increase' },
+                         { order: 2, action: 'backpressure', direction: 'decrease' },
+                         { order: 3, action: 'screwSpeed', direction: 'decrease' },
+                         { order: 4, action: 'injectionPressure', direction: 'decrease' },
+                         { order: 5, action: 'dryMaterials', direction: 'action' },
+                         { order: 6, action: 'regrindQuantity', direction: 'decrease' },
+                         { order: 7, action: 'checkMaterialContamination', direction: 'action' }
+                     ]
+                },
+                burnMarks: {
+                     name: { th: 'รอยไหม้ (Burn Marks)', en: 'Burn Marks' },
+                     description: {
+                         th: 'ลักษณะ: ปรากฏรอยสีดำหรือสีน้ำตาลเข้มคล้ายเขม่าไฟไหม้บนผิวชิ้นงาน โดยเฉพาะบริเวณปลายสุดของการไหล (End of Flow Path) หรือบริเวณที่อากาศถูกอัดตัว (Trapped Air) สาเหตุหลัก: อากาศหรือก๊าซที่ถูกกักขังในแม่พิมพ์ถูกบีบอัดอย่างรวดเร็วโดยพลาสติกหลอมเหลวที่ไหลเข้ามา ทำให้เกิดความร้อนสูงจนพลาสติกบริเวณนั้นไหม้ (Diesel Effect) ปัจจัยเสริม: การระบายอากาศในแม่พิมพ์ไม่เพียงพอ, ความเร็วการฉีดสูงเกินไป, อุณหภูมิวัสดุสูงเกินไป',
+                         en: 'Appearance: Black or dark brown char-like marks on the part surface, typically at the end of flow paths or in areas where air is trapped. Primary Cause: Air or gases trapped in the mold are rapidly compressed by the incoming molten plastic, generating high heat and causing the plastic to burn (Diesel Effect). Contributing Factors: Inadequate mold venting, excessive injection speed, or high melt temperature.'
+                     },
+                     steps: [
+                          { order: 1, action: 'injectionSpeed', direction: 'decrease' },
+                          { order: 2, action: 'meltTemperature', direction: 'decrease' },
+                          { order: 3, action: 'moldTemperature', direction: 'decrease' },
+                          { order: 4, action: 'injForwardTime', direction: 'decrease' },
+                          { order: 5, action: 'injectionPressure', direction: 'decrease' },
+                          { order: 6, action: 'sizeOfGate', direction: 'increase' },
+                          { order: 7, action: 'cleanVents', direction: 'action' },
+                          { order: 8, action: 'sizeOfVent', direction: 'increase' }
+                     ]
+                },
+                crackingCrazing: {
+                     name: { th: 'รอยแตกร้าว/ลายงา (Cracking/Crazing)', en: 'Cracking/Crazing' },
+                     description: {
+                         th: 'ลักษณะ: Cracking คือรอยแตกที่เห็นได้ชัดเจนบนชิ้นงาน Crazing คือกลุ่มของรอยแตกขนาดเล็กละเอียดคล้ายใยแมงมุม มักเกิดที่ผิว สาเหตุหลัก: ความเค้นตกค้าง (Residual Stress) ภายในชิ้นงานสูงเกินกว่าที่วัสดุจะรับได้ ซึ่งอาจมาจากการเย็นตัวที่ไม่สม่ำเสมอ, การออกแบบชิ้นงานที่มีความหนาแตกต่างกันมาก, หรือแรงดันย้ำสูงเกินไป ปัจจัยเสริม: การสัมผัสกับสารเคมีบางชนิด, การปลดชิ้นงานออกจากแม่พิมพ์ด้วยแรงที่มากเกินไป, อุณหภูมิแม่พิมพ์ต่ำเกินไป',
+                         en: 'Appearance: Cracking refers to visible fractures in the part. Crazing is a network of fine, microscopic cracks, often appearing as a hazy or web-like pattern on the surface. Primary Cause: Residual stresses within the part exceeding the material\'s strength, often due to non-uniform cooling, significant variations in wall thickness, or excessive holding pressure. Contributing Factors: Exposure to certain chemicals, excessive force during ejection, or low mold temperature.'
+                     },
+                     steps: [
+                         { order: 1, action: 'injectionSpeed', direction: 'decrease' },
+                         { order: 2, action: 'cylinderTemperature', direction: 'increase' },
+                         { order: 3, action: 'nozzleTemperature', direction: 'increase' },
+                         { order: 4, action: 'moldTemperature', direction: 'increase' },
+                         { order: 5, action: 'injectionPressure', direction: 'decrease' },
+                         { order: 6, action: 'dryMaterials', direction: 'action' },
+                         { order: 7, action: 'cleanVents', direction: 'action' }
+                     ]
+                },
+                delamination: {
+                     name: { th: 'การแยกชั้น (Delamination)', en: 'Delamination' },
+                     description: {
+                         th: 'ลักษณะ: ผิวหน้าของชิ้นงานลอกออกเป็นแผ่นหรือเป็นชั้นๆ คล้ายเกล็ดปลาหรือหัวหอม สาเหตุหลัก: การเข้ากันไม่ได้ของวัสดุ (เช่น การปนเปื้อนของพลาสติกต่างชนิด) หรือการมีสิ่งแปลกปลอมแทรกระหว่างชั้นการไหลของพลาสติก ปัจจัยเสริม: ความชื้นในวัสดุสูงเกินไป, อุณหภูมิวัสดุต่ำเกินไปทำให้การหลอมรวมไม่ดี, การใช้สารช่วยปลดแม่พิมพ์ (Mold Release Agent) มากเกินไป, วัสดุรีไซเคิลเสื่อมสภาพ',
+                         en: 'Appearance: The surface of the part peels off in layers, resembling fish scales or onion skin. Primary Cause: Incompatibility of materials (e.g., contamination with a different type of plastic) or the presence of foreign matter between layers of flowing plastic. Contributing Factors: Excessive moisture in the material, low melt temperature leading to poor fusion, excessive use of mold release agents, or degraded regrind material.'
+                     },
+                     steps: [
+                         { order: 1, action: 'moldTemperature', direction: 'increase' },
+                         { order: 2, action: 'meltTemperature', direction: 'increase' },
+                         { order: 3, action: 'checkMaterialContamination', direction: 'action' },
+                         { order: 4, action: 'injectionSpeed', direction: 'increase' },
+                         { order: 5, action: 'dryMaterials', direction: 'action' },
+                         { order: 6, action: 'regrindQuantity', direction: 'decrease' }
+                     ]
+                },
+                discoloration: {
+                     name: { th: 'สีเพี้ยน (Discoloration)', en: 'Discoloration' },
+                     description: {
+                         th: 'ลักษณะ: สีของชิ้นงานที่ได้ไม่สม่ำเสมอ หรือผิดเพี้ยนไปจากสีมาตรฐานที่ต้องการ อาจเป็นบางส่วนหรือทั้งชิ้น สาเหตุหลัก: การเสื่อมสภาพของเม็ดสี (Pigment) หรือตัวพอลิเมอร์เองเนื่องจากความร้อนสูงหรือเวลานานเกินไป, หรือการผสมสีที่ไม่เข้ากัน ปัจจัยเสริม: การปนเปื้อนของวัสดุสีอื่น, อุณหภูมิกระบอกฉีดหรือหัวฉีดสูงเกินไป, เวลาคงค้างของวัสดุในเครื่องนาน, การทำความสะอาดเครื่องไม่ดีพอเมื่อเปลี่ยนสี',
+                         en: 'Appearance: Non-uniform color or deviation from the desired standard color in the molded part, either localized or throughout. Primary Cause: Degradation of pigments or the polymer itself due to excessive heat or time, or incompatible colorant blending. Contributing Factors: Contamination by other colored materials, excessive barrel or nozzle temperature, long material residence time in the machine, or inadequate machine cleaning during color changes.'
+                     },
+                     steps: [
+                         { order: 1, action: 'purgeCleanScrewBarrel', direction: 'action' },
+                         { order: 2, action: 'cylinderTemperature', direction: 'decrease' },
+                         { order: 3, action: 'nozzleTemperature', direction: 'decrease' },
+                         { order: 4, action: 'backpressure', direction: 'decrease' },
+                         { order: 5, action: 'overallCycleTime', direction: 'decrease' },
+                         { order: 6, action: 'checkMaterialContamination', direction: 'action' },
+                         { order: 7, action: 'sizeOfVent', direction: 'increase' }
+                     ]
+                },
+                flowMarks: {
+                     name: { th: 'รอยทางไหล (Flow Marks)', en: 'Flow Marks' },
+                     description: {
+                         th: 'ลักษณะ: ปรากฏเป็นริ้วคลื่น, วงปี, หรือลวดลายบนผิวชิ้นงานที่บ่งบอกทิศทางการไหลของพลาสติกหลอมเหลวในแม่พิมพ์ สาเหตุหลัก: ความเร็วในการฉีดที่ไม่สม่ำเสมอ หรือการที่ผิวหน้าของพลาสติกที่สัมผัสกับแม่พิมพ์เย็นตัวลงอย่างรวดเร็วในขณะที่พลาสติกส่วนที่ยังร้อนอยู่ภายในยังคงไหลต่อไป ปัจจัยเสริม: อุณหภูมิพลาสติกหลอมเหลวหรืออุณหภูมิแม่พิมพ์ต่ำเกินไป, ความเร็วการฉีดต่ำหรือสูงเกินไป, ขนาดประตูเข้า (Gate) เล็ก, การระบายอากาศไม่ดี',
+                         en: 'Appearance: Wavy patterns, rings, or distinct lines on the part surface indicating the flow path of molten plastic within the mold. Primary Cause: Non-uniform injection speed, or rapid cooling of the plastic skin layer in contact with the mold while the hotter core material continues to flow. Contributing Factors: Low melt or mold temperature, injection speed too low or too high, small gate size, poor venting.'
+                     },
+                     steps: [
+                         { order: 1, action: 'cylinderTemperature', direction: 'increase' },
+                         { order: 2, action: 'moldTemperature', direction: 'increase' },
+                         { order: 3, action: 'nozzleTemperature', direction: 'increase' },
+                         { order: 4, action: 'injectionPressure', direction: 'increase' },
+                         { order: 5, action: 'injectionSpeed', direction: 'increase' },
+                         { order: 6, action: 'sizeOfGate', direction: 'increase' },
+                         { order: 7, action: 'sizeOfSprueRunner', direction: 'increase' },
+                         { order: 8, action: 'sizeOfVent', direction: 'increase' }
+                     ]
+                },
+                jetting: {
+                     name: { th: 'รอยเจ็ตติ้ง (Jetting)', en: 'Jetting' },
+                     description: {
+                         th: 'ลักษณะ: เกิดเป็นรอยเส้นคดเคี้ยวคล้ายงูเลื้อยหรือเส้นเชือกบนผิวชิ้นงาน โดยเริ่มจากบริเวณประตูเข้า (Gate) สาเหตุหลัก: พลาสติกหลอมเหลวถูกฉีดผ่านประตูเข้าด้วยความเร็วสูงเป็นลำแคบๆ พุ่งเข้าไปในโพรงแม่พิมพ์โดยไม่มีการยึดเกาะกับผนังแม่พิมพ์ในทันที ทำให้เกิดการแข็งตัวเป็นเส้นก่อนที่พลาสติกส่วนที่เหลือจะไหลตามมาเติมเต็ม ปัจจัยเสริม: ความเร็วการฉีดสูงเกินไป, อุณหภูมิวัสดุหรือแม่พิมพ์ต่ำ, ขนาดหรือตำแหน่งของประตูไม่เหมาะสม',
+                         en: 'Appearance: A snake-like or worm-like wavy line on the part surface, typically originating from the gate. Primary Cause: Molten plastic is injected at high velocity through the gate as a narrow stream, shooting into the cavity without immediately adhering to the mold walls, thus solidifying as a line before the rest of the melt fills around it. Contributing Factors: Excessive injection speed, low melt or mold temperature, or improper gate size/location.'
+                     },
+                     steps: [
+                         { order: 1, action: 'injectionSpeed', direction: 'decrease' },
+                         { order: 2, action: 'meltTemperature', direction: 'increase' },
+                         { order: 3, action: 'moldTemperature', direction: 'increase' },
+                         { order: 4, action: 'sizeOfGate', direction: 'increase' },
+                         { order: 5, action: 'changeGateLocation', direction: 'action' },
+                         { order: 6, action: 'sizeOfSprueRunner', direction: 'increase' },
+                         { order: 7, action: 'overallCycleTime', direction: 'decrease' }
+                     ]
+                },
+                poorSurfaceFinish: {
+                     name: { th: 'ผิวชิ้นงานไม่สวย (Poor Surface Finish/Gloss)', en: 'Poor Surface Finish/Gloss' },
+                     description: {
+                         th: 'ลักษณะ: ผิวชิ้นงานไม่เรียบ, หมอง, ขาดความเงางาม, หรือไม่สามารถถ่ายทอดรายละเอียดผิวของแม่พิมพ์ออกมาได้ดี สาเหตุหลัก: การสัมผัสระหว่างพลาสติกหลอมเหลวกับผิวแม่พิมพ์ไม่สมบูรณ์ หรือการแข็งตัวของพลาสติกเร็วเกินไปก่อนที่จะแนบสนิทกับผิวแม่พิมพ์ ปัจจัยเสริม: อุณหภูมิแม่พิมพ์หรือวัสดุต่ำเกินไป, ความเร็วการฉีดไม่เหมาะสม, แรงดันย้ำต่ำ, การระบายอากาศไม่ดี, ความชื้นในวัสดุ, ผิวแม่พิมพ์ไม่ดี',
+                         en: 'Appearance: The part surface is dull, lacks gloss, is not smooth, or fails to accurately replicate the mold surface texture. Primary Cause: Incomplete contact between the molten plastic and the mold surface, or premature solidification of the plastic before it conforms to the mold details. Contributing Factors: Low mold or melt temperature, improper injection speed, low holding pressure, poor venting, moisture in the material, or poor mold surface condition.'
+                     },
+                     steps: [
+                         { order: 1, action: 'moldTemperature', direction: 'increase' },
+                         { order: 2, action: 'injectionPressure', direction: 'increase' },
+                         { order: 3, action: 'cylinderTemperature', direction: 'increase' },
+                         { order: 4, action: 'injectionSpeed', direction: 'increase' },
+                         { order: 5, action: 'sizeOfVent', direction: 'increase' },
+                         { order: 6, action: 'cleanCavitySurface', direction: 'action' },
+                         { order: 7, action: 'changeGateLocation', direction: 'action' },
+                         { order: 8, action: 'moldcoolingTime', direction: 'increase' }
+                     ]
+                },
+                poorWeldLines: {
+                     name: { th: 'รอยเชื่อมประสานไม่ดี (Poor Weld Lines)', en: 'Poor Weld Lines' },
+                     description: {
+                         th: 'ลักษณะ: ปรากฏเป็นเส้นหรือร่องบนผิวชิ้นงาน ณ บริเวณที่แนวการไหลของพลาสติกหลอมเหลวตั้งแต่สองแนวขึ้นไปมาบรรจบกัน (Weld Line) หรือบริเวณที่แนวการไหลเดียวแยกแล้วกลับมารวมกัน (Meld Line) หากรอยนี้อ่อนแอจะทำให้ความแข็งแรงของชิ้นงานลดลง สาเหตุหลัก: อุณหภูมิของพลาสติก ณ จุดที่มาบรรจบกันต่ำเกินไป ทำให้การหลอมรวมตัวไม่สมบูรณ์ ปัจจัยเสริม: อุณหภูมิแม่พิมพ์ต่ำ, ความเร็วการฉีดต่ำ, แรงดันย้ำต่ำ, การระบายอากาศไม่ดีทำให้เกิดก๊าซกั้นขวาง, ทางเดินพลาสติกยาวเกินไป',
+                         en: 'Appearance: A line or notch on the part surface where two or more molten plastic flow fronts meet (weld line), or where a single flow front splits and rejoins (meld line). If this line is weak, it reduces the part\'s strength. Primary Cause: Insufficient temperature of the plastic at the meeting point, leading to incomplete fusion. Contributing Factors: Low mold temperature, low injection speed, low holding pressure, poor venting (trapped gas), or excessively long flow paths.'
+                     },
+                     steps: [
+                         { order: 1, action: 'injectionPressure', direction: 'increase' },
+                         { order: 2, action: 'meltTemperature', direction: 'increase' },
+                         { order: 3, action: 'injectionHoldTime', direction: 'increase' },
+                         { order: 4, action: 'moldTemperature', direction: 'increase' },
+                         { order: 5, action: 'injectionSpeed', direction: 'increase' },
+                         { order: 6, action: 'sizeOfVent', direction: 'increase' },
+                         { order: 7, action: 'changeGateLocation', direction: 'action' },
+                         { order: 8, action: 'dryMaterials', direction: 'action' }
+                     ]
+                },
+                silverStreaksSplaySplash: {
+                     name: { th: 'รอยเส้นสีเงิน/สเปลย์/สาด (Silver Streaks/Splay/Splash)', en: 'Silver Streaks/Splay/Splash' },
+                     description: {
+                         th: 'ลักษณะ: ปรากฏเป็นลายเส้นสีเงิน, รอยแตกกระจายคล้ายดาว (Splay), หรือรอยกระเด็น (Splash) บนผิวชิ้นงาน มักมีทิศทางตามการไหลของพลาสติก สาเหตุหลัก: ความชื้นในเม็ดพลาสติกที่ระเหยกลายเป็นไอเมื่อได้รับความร้อนในกระบอกฉีดแล้วถูกฉีดเข้าไปในแม่พิมพ์ หรือเกิดจากก๊าซที่มาจากการสลายตัวของวัสดุ ปัจจัยเสริม: การอบเม็ดพลาสติกไม่แห้งสนิท, อุณหภูมิวัสดุสูงเกินไป, การปนเปื้อนของวัสดุที่ปล่อยก๊าซ, แรงเฉือนสูงจากการออกแบบสกรูหรือหัวฉีด',
+                         en: 'Appearance: Silvery streaks, star-like patterns (splay), or splash marks on the part surface, often oriented in the direction of melt flow. Primary Cause: Moisture in the resin volatilizing into steam upon heating in the barrel and being injected into the mold, or gases from material degradation. Contributing Factors: Insufficiently dried resin, excessive melt temperature, contamination by gas-releasing materials, or high shear from screw/nozzle design.'
+                     },
+                     steps: [
+                         { order: 1, action: 'dryMaterials', direction: 'action' },
+                         { order: 2, action: 'checkMaterialContamination', direction: 'action' },
+                         { order: 3, action: 'cylinderTemperature', direction: 'decrease' },
+                         { order: 4, action: 'injectionSpeed', direction: 'decrease' },
+                         { order: 5, action: 'nozzleTemperature', direction: 'decrease' },
+                         { order: 6, action: 'moldTemperature', direction: 'action' },
+                         { order: 7, action: 'overallCycleTime', direction: 'decrease' },
+                         { order: 8, action: 'sizeOfGate', direction: 'increase' }
+                     ]
+                },
+                sinkMarks: {
+                    name: { th: 'รอยยุบ (Sink Marks)', en: 'Sink Marks' },
+                    description: {
+                        th: 'ลักษณะ: เกิดเป็นรอยบุ๋มหรือแอ่งยุบตัวลงบนผิวหน้าของชิ้นงาน มักปรากฏในบริเวณที่มีความหนาของเนื้อพลาสติกมาก เช่น บริเวณโคนครีบ (Ribs), บอส (Bosses), หรือผนังหนา สาเหตุหลัก: การหดตัวของพลาสติกในระหว่างการเย็นตัวที่ไม่สม่ำเสมอ โดยส่วนที่หนาจะเย็นตัวและหดตัวช้ากว่าส่วนที่บาง ทำให้เกิดแรงดึงที่ผิวด้านนอกเข้ามา ปัจจัยเสริม: แรงดันย้ำ (Holding Pressure) ไม่เพียงพอหรือเวลาน้อยเกินไป, อุณหภูมิวัสดุหรือแม่พิมพ์สูงเกินไป, ปริมาณวัสดุที่ฉีดไม่พอดี, การออกแบบความหนาชิ้นงานไม่สม่ำเสมอ',
+                        en: 'Appearance: Depressions or indentations on the part surface, commonly found in areas with thicker sections, such as at the base of ribs, bosses, or thick walls. Primary Cause: Non-uniform shrinkage of plastic during cooling, where thicker sections cool and shrink more slowly, pulling the outer surface inward. Contributing Factors: Insufficient or short holding pressure, excessively high melt or mold temperature, inadequate shot size, or non-uniform part wall thickness design.'
+                    },
+                    steps: [
+                        { order: 1, action: 'shotSize', direction: 'increase' },
+                        { order: 2, action: 'injectionPressure', direction: 'increase' },
+                        { order: 3, action: 'holdingPressure', direction: 'increase' },
+                        { order: 4, action: 'moldTemperature', direction: 'decrease' },
+                        { order: 5, action: 'meltTemperature', direction: 'decrease' },
+                        { order: 6, action: 'injectionSpeed', direction: 'increase' },
+                        { order: 7, action: 'backpressure', direction: 'increase' },
+                        { order: 8, action: 'screwSpeed', direction: 'increase' },
+                        { order: 9, action: 'sizeOfSprueRunner', direction: 'increase' },
+                        { order: 10, action: 'sizeOfGate', direction: 'increase' },
+                        { order: 11, action: 'dryMaterials', direction: 'action' },
+                        { order: 12, action: 'regrindQuantity', direction: 'decrease' },
+                        { order: 13, action: 'changeGateLocation', direction: 'action' }
+                    ]
+                },
+                voids: {
+                    name: { th: 'โพรงอากาศภายใน (Voids)', en: 'Voids' },
+                    description: {
+                        th: 'ลักษณะ: เกิดเป็นช่องว่างหรือฟองอากาศขนาดใหญ่อยู่ภายในเนื้อชิ้นงาน ซึ่งมักจะไม่สามารถมองเห็นได้จากภายนอก แต่จะส่งผลต่อความแข็งแรงและคุณสมบัติทางกลของชิ้นงาน สาเหตุหลัก: การหดตัวของพลาสติกในส่วนแกนกลางของบริเวณที่หนา โดยไม่มีพลาสติกหลอมเหลวไหลเข้าไปเติมเต็มได้ทันในระหว่างขั้นตอนการย้ำ (Holding Phase) ปัจจัยเสริม: แรงดันย้ำต่ำหรือสั้นเกินไป, อุณหภูมิวัสดุสูงเกินไปทำให้การหดตัวมาก, การเย็นตัวเร็วเกินไปที่ผิวทำให้เกิดการแข็งตัวก่อนที่ภายในจะเย็นสนิท, ความชื้นในวัสดุ',
+                        en: 'Appearance: Internal cavities or large air bubbles within the bulk of the part, usually not visible externally, but affecting its strength and mechanical properties. Primary Cause: Shrinkage of plastic in the core of thick sections, where molten plastic cannot flow in to compensate during the holding phase. Contributing Factors: Insufficient or short holding pressure, high melt temperature causing excessive shrinkage, rapid surface cooling (skinning) before the core solidifies, or moisture in the material.'
+                    },
+                    steps: [
+                        { order: 1, action: 'shotSize', direction: 'increase' },
+                        { order: 2, action: 'injectionPressure', direction: 'increase' },
+                        { order: 3, action: 'holdingPressure', direction: 'increase' },
+                        { order: 4, action: 'moldTemperature', direction: 'increase' },
+                        { order: 5, action: 'meltTemperature', direction: 'decrease' },
+                        { order: 6, action: 'injectionSpeed', direction: 'decrease' },
+                        { order: 7, action: 'cleanVents', direction: 'action' },
+                        { order: 8, action: 'sizeOfSprueRunner', direction: 'increase' },
+                        { order: 9, action: 'sizeOfGate', direction: 'increase' },
+                        { order: 10, action: 'dryMaterials', direction: 'action' },
+                        { order: 11, action: 'changeGateLocation', direction: 'action' }
+                    ]
+                },
+                warping: {
+                    name: { th: 'การบิดเบี้ยว (Warping)', en: 'Warping' },
+                    description: {
+                        th: 'ลักษณะ: ชิ้นงานเกิดการบิดงอ, โก่งตัว, หรือเสียรูปทรงไปจากเดิมภายหลังจากการปลดออกจากแม่พิมพ์และเย็นตัวลงแล้ว สาเหตุหลัก: ความเค้นตกค้าง (Residual Stress) ที่ไม่สม่ำเสมอภายในชิ้นงาน อันเนื่องมาจากการหดตัวที่ไม่เท่ากันในแต่ละส่วนของชิ้นงานระหว่างการเย็นตัว ปัจจัยเสริม: การออกแบบชิ้นงานที่มีความหนาแตกต่างกันมาก, อุณหภูมิแม่พิมพ์สองฝั่งไม่สมดุล, การปลดชิ้นงานขณะที่ยังร้อนเกินไป, แรงดันย้ำสูงหรือนานเกินไป, วัสดุที่มีอัตราการหดตัวสูง',
+                        en: 'Appearance: The part bends, twists, or distorts from its intended shape after ejection from the mold and cooling. Primary Cause: Non-uniform residual stresses within the part, resulting from differential shrinkage in various sections during cooling. Contributing Factors: Part design with significant variations in wall thickness, unbalanced mold temperatures between halves, ejecting the part while still too hot, excessive or prolonged holding pressure, or materials with high shrinkage rates.'
+                    },
+                    steps: [
+                        { order: 1, action: 'moldTemperature', direction: 'decrease' },
+                        { order: 2, action: 'moldcoolingTime', direction: 'increase' },
+                        { order: 3, action: 'injectionHoldTime', direction: 'increase' },
+                        { order: 4, action: 'injectionPressure', direction: 'decrease' },
+                        { order: 5, action: 'meltTemperature', direction: 'decrease' },
+                        { order: 6, action: 'sizeOfGate', direction: 'increase' },
+                        { order: 7, action: 'changeGateLocation', direction: 'action' }
+                    ]
+                }
+            }
+        };
+
+        const translations = {
+            th: {
+                headerTitle: 'ระบบวิเคราะห์และแก้ไขปัญหาการฉีดพลาสติก',
+                headerSubtitle: 'TSPT1 Injection Molding Expertise',
+                languageLabel: '🌍 ภาษา:',
+                searchLabel: '🔎 ค้นหาปัญหา:',
+                machineDefectsTitle: '⚙️ ปัญหาที่เกี่ยวข้องกับเครื่องจักร',
+                partDefectsTitle: '📦 ปัญหาที่ชิ้นงาน',
+                searchPlaceholder: 'พิมพ์ชื่อปัญหาที่ต้องการค้นหา...',
+                stepPrefix: 'ขั้นตอนที่',
+                increase: 'เพิ่ม ↑',
+                decrease: 'ลด ↓',
+                other: 'ดำเนินการ/ปรับ ↕',
+                footerDisclaimer: 'ข้อมูลนี้เป็นแนวทางเบื้องต้น โปรดปรึกษาผู้เชี่ยวชาญและคู่มือเฉพาะเครื่องจักร/วัสดุสำหรับการแก้ไขปัญหาจริง'
+            },
+            en: {
+                headerTitle: 'Injection Molding Troubleshooting System',
+                headerSubtitle: 'TSPT1 Injection Molding Expertise',
+                languageLabel: '🌍 Language:',
+                searchLabel: '🔎 Search Defect:',
+                machineDefectsTitle: '⚙️ Machine-Related Defects',
+                partDefectsTitle: '📦 Part Defects',
+                searchPlaceholder: 'Type defect name to search...',
+                stepPrefix: 'Step',
+                increase: 'Increase ↑',
+                decrease: 'Decrease ↓',
+                other: 'Action/Adjust ↕',
+                footerDisclaimer: 'This information is a preliminary guide. Please consult experts and specific machine/material manuals for actual troubleshooting.'
+            }
+        };
+
+        let currentLanguage = 'th';
+        let selectedDefectElement = null;
+
+        function initializeApp() {
+            setupEventListeners();
+            setupLanguage(); // Will call updateLanguage and renderDefectLists
+        }
+
+        function setupLanguage() {
+            const savedLanguage = localStorage.getItem('appLanguage');
+            if (savedLanguage && translations[savedLanguage]) {
+                currentLanguage = savedLanguage;
+            } else {
+                 const browserLang = navigator.language.split('-')[0];
+                 if (translations[browserLang]) {
+                     currentLanguage = browserLang;
+                 } else {
+                     currentLanguage = 'th';
+                 }
+            }
+            document.getElementById('languageToggle').value = currentLanguage;
+            updateLanguage();
+            renderDefectLists(); // Ensure lists are rendered after language is set
+        }
+
+        function setupEventListeners() {
+            document.getElementById('languageToggle').addEventListener('change', handleLanguageChange);
+            document.getElementById('searchInput').addEventListener('input', handleSearch);
+            document.getElementById('machineDefectsList').addEventListener('click', handleDefectClick);
+            document.getElementById('partDefectsList').addEventListener('click', handleDefectClick);
+        }
+
+        function handleLanguageChange(event) {
+            currentLanguage = event.target.value;
+            localStorage.setItem('appLanguage', currentLanguage);
+            updateLanguage();
+            renderDefectLists();
+            // If a defect was selected, re-display its solution in the new language
+            if (selectedDefectElement) {
+                const category = selectedDefectElement.dataset.category;
+                const key = selectedDefectElement.dataset.key;
+                const defectData = defectsDatabase[category === 'machine' ? 'machineDefects' : 'partDefects'][key];
+                if (defectData) {
+                    showSolution(category, key, selectedDefectElement);
+                } else {
+                    document.getElementById('solutionPanel').classList.remove('active');
+                }
+            } else {
+                document.getElementById('solutionPanel').classList.remove('active');
+            }
+        }
+
+        function updateLanguage() {
+            const texts = translations[currentLanguage];
+            document.getElementById('headerTitle').textContent = texts.headerTitle;
+            document.getElementById('headerSubtitle').textContent = texts.headerSubtitle;
+            document.getElementById('languageLabel').innerHTML = texts.languageLabel; // Keep innerHTML if it contains icons
+            document.getElementById('searchLabel').innerHTML = texts.searchLabel; // Keep innerHTML
+            document.getElementById('machineDefectsTitle').innerHTML = `<span>⚙️</span> ${texts.machineDefectsTitle.replace('⚙️ ','')}`;
+            document.getElementById('partDefectsTitle').innerHTML = `<span>📦</span> ${texts.partDefectsTitle.replace('📦 ','')}`;
+            document.getElementById('searchInput').placeholder = texts.searchPlaceholder;
+            document.getElementById('footerDisclaimer').textContent = texts.footerDisclaimer;
+
+            // Re-render solution panel if active
+            if (selectedDefectElement) {
+                 const category = selectedDefectElement.dataset.category;
+                 const key = selectedDefectElement.dataset.key;
+                 const defectData = defectsDatabase[category === 'machine' ? 'machineDefects' : 'partDefects'][key];
+                 if (defectData) {
+                    document.getElementById('solutionTitle').textContent = defectData.name[currentLanguage];
+                    document.getElementById('solutionDescription').textContent = defectData.description[currentLanguage];
+                    const stepsContainer = document.getElementById('stepsContainer');
+                    stepsContainer.innerHTML = '';
+                    defectData.steps.sort((a, b) => a.order - b.order).forEach(step => {
+                        stepsContainer.appendChild(createStepElement(step));
+                    });
+                 }
+            }
+        }
+
+        function renderDefectLists() {
+            renderDefectCategory('machineDefectsList', defectsDatabase.machineDefects, 'machine');
+            renderDefectCategory('partDefectsList', defectsDatabase.partDefects, 'part');
+        }
+
+        function renderDefectCategory(containerId, defectsObject, categoryType) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; // Clear previous items
+
+            const sortedDefects = Object.keys(defectsObject)
+                .map(key => ({ key, data: defectsObject[key] }))
+                .sort((a, b) => {
+                    const nameA = a.data.name[currentLanguage] || a.data.name['en']; // Fallback to English for sorting if current lang name is missing
+                    const nameB = b.data.name[currentLanguage] || b.data.name['en'];
+                    return nameA.localeCompare(nameB, currentLanguage);
+                });
+
+            sortedDefects.forEach(({ key, data }) => {
+                const item = document.createElement('div');
+                item.className = 'defect-item';
+                item.textContent = data.name[currentLanguage] || data.name['en']; // Display name
+                item.dataset.category = categoryType; // 'machine' or 'part'
+                item.dataset.key = key;
+
+                if (selectedDefectElement && selectedDefectElement.dataset.key === key && selectedDefectElement.dataset.category === categoryType) {
+                    item.classList.add('selected');
+                }
+                container.appendChild(item);
+            });
+        }
+
+
+        function handleDefectClick(event) {
+             const target = event.target.closest('.defect-item');
+             if (target && target.dataset.category && target.dataset.key) {
+                 const category = target.dataset.category; // 'machine' or 'part'
+                 const key = target.dataset.key;
+
+                 if (selectedDefectElement) {
+                     selectedDefectElement.classList.remove('selected');
+                 }
+                 selectedDefectElement = target;
+                 selectedDefectElement.classList.add('selected');
+                 showSolution(category, key, selectedDefectElement);
+             }
+        }
+
+        function showSolution(categoryType, defectKey, defectElement) {
+            // Ensure the clicked element is marked as selected
+            if (selectedDefectElement !== defectElement) {
+                if(selectedDefectElement) selectedDefectElement.classList.remove('selected');
+                selectedDefectElement = defectElement;
+                if(selectedDefectElement) selectedDefectElement.classList.add('selected');
+            }
+
+            const defectData = defectsDatabase[categoryType === 'machine' ? 'machineDefects' : 'partDefects'][defectKey];
+            if (!defectData) {
+                console.error("Defect data not found for:", categoryType, defectKey);
+                document.getElementById('solutionPanel').classList.remove('active');
+                return;
+            }
+
+            document.getElementById('solutionTitle').textContent = defectData.name[currentLanguage];
+            document.getElementById('solutionDescription').textContent = defectData.description[currentLanguage];
+
+            const stepsContainer = document.getElementById('stepsContainer');
+            stepsContainer.innerHTML = '';
+
+            if (defectData.steps && defectData.steps.length > 0) {
+                defectData.steps.sort((a, b) => a.order - b.order).forEach(step => {
+                    stepsContainer.appendChild(createStepElement(step));
+                });
+            }
+
+            const solutionPanel = document.getElementById('solutionPanel');
+            solutionPanel.classList.add('active');
+            solutionPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+
+        function createStepElement(step) {
+            const stepDiv = document.createElement('div');
+            stepDiv.className = 'step-item';
+
+            const actionData = defectsDatabase.parameterNames[step.action];
+            const actionName = actionData ? actionData[currentLanguage] : step.action; // Fallback to key if not found
+
+            const directionText = getDirectionText(step.direction);
+            const directionClass = getDirectionClass(step.direction);
+
+            stepDiv.innerHTML = `
+                <div class="step-number">${step.order}</div>
+                <div class="step-content">
+                    <div class="step-action-name">${actionName}</div>
+                    <div class="step-direction ${directionClass}">${directionText}</div>
+                </div>
+            `;
+            return stepDiv;
+        }
+
+        function getDirectionText(direction) {
+            const texts = translations[currentLanguage];
+            switch (direction) {
+                case 'increase': return texts.increase;
+                case 'decrease': return texts.decrease;
+                case 'action': return texts.other;
+                default: return direction;
+            }
+        }
+
+        function getDirectionClass(direction) {
+            switch (direction) {
+                case 'increase': return 'direction-increase';
+                case 'decrease': return 'direction-decrease';
+                case 'action': return 'direction-other';
+                default: return '';
+            }
+        }
+
+        function handleSearch(event) {
+            const searchTerm = event.target.value.toLowerCase().trim();
+            const allDefectItems = document.querySelectorAll('.defect-item');
+
+            allDefectItems.forEach(item => {
+                const category = item.dataset.category; // 'machine' or 'part'
+                const key = item.dataset.key;
+                const defectData = defectsDatabase[category === 'machine' ? 'machineDefects' : 'partDefects'][key];
+
+                if (defectData) {
+                    const defectNameTh = defectData.name.th.toLowerCase();
+                    const defectNameEn = defectData.name.en.toLowerCase();
+                    const descriptionTh = defectData.description.th.toLowerCase();
+                    const descriptionEn = defectData.description.en.toLowerCase();
+
+                    if (defectNameTh.includes(searchTerm) || defectNameEn.includes(searchTerm) || descriptionTh.includes(searchTerm) || descriptionEn.includes(searchTerm)) {
+                        item.style.display = 'flex'; // or 'block' depending on original display
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>
